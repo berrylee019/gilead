@@ -2,16 +2,19 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import numpy as np
-import pydeck as pdk
 
 # --- [0] 기본 설정 및 스타일 ---
 st.set_page_config(page_title="Gilead Clinical AI Suite", layout="wide", page_icon="🧬")
 
-# 길리어드 느낌의 스타일링 (옵션)
+# 길리어드 브랜드 아이덴티티를 반영한 스타일링
 st.markdown("""
     <style>
     .main { background-color: #f5f7f9; }
     .stMetric { background-color: #ffffff; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    /* 사이드바 로고 영역 스타일 */
+    [data-testid="stSidebar"] {
+        background-color: #ffffff;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -53,28 +56,40 @@ def show_equity_analyzer():
     
     # 가상 데이터
     df = pd.DataFrame({
-        'city': ['Seoul', 'New York', 'London', 'Tokyo', 'Sao Paulo'],
+        'City': ['Seoul', 'New York', 'London', 'Tokyo', 'Sao Paulo'],
         'lat': [37.56, 40.71, 51.50, 35.68, -23.55],
         'lon': [126.97, -74.00, -0.12, 139.65, -46.63],
-        'enrollment': [150, 300, 120, 200, 180],
-        'diversity_score': [0.65, 0.92, 0.85, 0.70, 0.88]
+        'Enrollment': [150, 300, 120, 200, 180],
+        'Diversity Score': [0.65, 0.92, 0.85, 0.70, 0.88]
     })
     
-    st.pydeck_chart(pdk.Deck(
-        map_style='mapbox://styles/mapbox/light-v9',
-        initial_view_state=pdk.ViewState(latitude=20, longitude=0, zoom=1),
-        layers=[
-            pdk.Layer('ScatterplotLayer', data=df, get_position='[lon, lat]',
-                      get_color='[0, 104, 201, 160]', get_radius='enrollment * 2000')
-        ],
-    ))
+    # Plotly scatter_geo를 사용하여 세계지도를 배경으로 확실하게 표시
+    fig = px.scatter_geo(df,
+                         lat='lat',
+                         lon='lon',
+                         hover_name='City',
+                         size='Enrollment',
+                         color='Diversity Score',
+                         projection="natural earth",
+                         color_continuous_scale=px.colors.sequential.Reds,
+                         title="Global Clinical Trial Enrollment & Diversity Map")
+    
+    # 지도 디자인 최적화
+    fig.update_geos(
+        showcountries=True, countrycolor="RebeccaPurple",
+        showland=True, landcolor="LightGreen",
+        showocean=True, oceancolor="LightBlue",
+        showlakes=True, lakecolor="Blue"
+    )
+    
+    st.plotly_chart(fig, use_container_width=True)
     
     st.subheader("Site Compliance Status")
     cols = st.columns(len(df))
     for i, row in df.iterrows():
-        status = "✅" if row['diversity_score'] >= 0.8 else "⚠️"
-        cols[i].write(f"**{row['city']}**")
-        cols[i].write(f"{status} {int(row['diversity_score']*100)}%")
+        status = "✅" if row['Diversity Score'] >= 0.8 else "⚠️"
+        cols[i].write(f"**{row['City']}**")
+        cols[i].write(f"{status} {int(row['Diversity Score']*100)}%")
 
 def show_protocol_intelligence():
     st.header("💬 Clinical Protocol Intelligence")
@@ -83,7 +98,7 @@ def show_protocol_intelligence():
     uploaded_file = st.file_uploader("임상 프로토콜 PDF 업로드", type="pdf")
     
     if "messages" not in st.session_state:
-        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 형님! 업로드하신 프로토콜에 대해 궁금한 점을 물어봐 주세요."}]
+        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 업로드하신 프로토콜에 대해 궁금한 점을 물어봐 주세요."}]
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
@@ -102,14 +117,16 @@ def show_protocol_intelligence():
 
 # --- [2] 메인 사이드바 내비게이션 ---
 
-st.sidebar.image("https://www.gilead.com/-/media/gilead-corporate/images/logos/gilead_logo_red_white.png", width=150) # 로고 예시
-st.sidebar.title("Navigation")
-app_mode = st.sidebar.radio("Select Tool", 
+# 사이드바 상단 로고 (길리어드 공식 로고 경로)
+st.sidebar.image("https://www.gilead.com/-/media/gilead-corporate/images/logos/gilead_logo_red_white.png", width=180)
+st.sidebar.title("Clinical Navigation")
+app_mode = st.sidebar.radio("Select AI Tool", 
     ["ADC Optimizer", "Trial Equity Analyzer", "Protocol Intelligence"])
 
 st.sidebar.markdown("---")
 st.sidebar.write(f"**User:** Member")
 st.sidebar.write(f"**System Status:** Operational ✅")
+st.sidebar.write(f"**Location:** Seoul, KR")
 
 # --- [3] 페이지 렌더링 ---
 
