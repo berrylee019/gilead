@@ -108,7 +108,7 @@ app_mode = st.sidebar.radio("Select Tool",
     ["ADC Optimizer", "Trial Equity Analyzer", "Protocol Intelligence"])
 
 st.sidebar.markdown("---")
-st.sidebar.write(f"**User:** 형님(Hyung-nim)")
+st.sidebar.write(f"**User:** Member")
 st.sidebar.write(f"**System Status:** Operational ✅")
 
 # --- [3] 페이지 렌더링 ---
