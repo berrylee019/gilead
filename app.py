@@ -121,7 +121,7 @@ def show_protocol_intelligence():
 # 기존 주소 대신 위키미디어의 안정적인 주소를 사용합니다.
 gilead_logo_url = "https://gilead.stylelabs.cloud/api/public/content/89749f3b535e4eebb8ae07c8e9607b17?v=c1371898"
 
-st.sidebar.image(gilead_logo_url, width=200)
+st.sidebar.image(gilead_logo_url, width=150)
 st.sidebar.title("Clinical Navigation")
 app_mode = st.sidebar.radio("Select AI Tool", 
     ["ADC Optimizer", "Trial Equity Analyzer", "Protocol Intelligence"])
