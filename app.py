@@ -115,7 +115,7 @@ else:
     app_mode = st.sidebar.radio("Korea Edition", ["K-Multi-Center Tracker", "Patient Funnel", "Safety & AE Monitoring"])
 
 st.sidebar.markdown("---")
-st.sidebar.write(f"**Current User:** PI / Coordinator (형님)")
+st.sidebar.write(f"**Current User:** PI / Coordinator")
 st.sidebar.write(f"**Region:** South Korea 🇰🇷")
 
 # --- [4] 페이지 렌더링 로직 ---
