@@ -119,7 +119,7 @@ def show_protocol_intelligence():
 
 # 사이드바 상단 로고 (길리어드 공식 로고 경로)
 # 기존 주소 대신 위키미디어의 안정적인 주소를 사용합니다.
-gilead_logo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Gilead_Sciences_logo.svg/512px-Gilead_Sciences_logo.svg.png"
+gilead_logo_url = "https://gilead.stylelabs.cloud/api/public/content/89749f3b535e4eebb8ae07c8e9607b17?v=c1371898"
 
 st.sidebar.image(gilead_logo_url, width=200)
 st.sidebar.title("Clinical Navigation")
