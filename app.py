@@ -118,7 +118,10 @@ def show_protocol_intelligence():
 # --- [2] 메인 사이드바 내비게이션 ---
 
 # 사이드바 상단 로고 (길리어드 공식 로고 경로)
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Gilead_Sciences_logo.svg/512px-Gilead_Sciences_logo.svg.png", width=180)
+# 기존 주소 대신 위키미디어의 안정적인 주소를 사용합니다.
+gilead_logo_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Gilead_Sciences_logo.svg/512px-Gilead_Sciences_logo.svg.png"
+
+st.sidebar.image(gilead_logo_url, width=200)
 st.sidebar.title("Clinical Navigation")
 app_mode = st.sidebar.radio("Select AI Tool", 
     ["ADC Optimizer", "Trial Equity Analyzer", "Protocol Intelligence"])
