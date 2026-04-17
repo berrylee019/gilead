@@ -62,7 +62,7 @@ def show_protocol_intelligence():
     st.header(" Clinical Protocol Intelligence")
     uploaded_file = st.file_uploader("임상 프로토콜 PDF 업로드", type="pdf")
     if "messages" not in st.session_state:
-        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 형님! 프로토콜 분석을 도와드릴까요?"}]
+        st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 프로토콜 분석을 도와드릴까요?"}]
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]): st.markdown(msg["content"])
     if prompt := st.chat_input("질문을 입력하세요"):
