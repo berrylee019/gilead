@@ -17,7 +17,7 @@ st.markdown("""
 # --- [1] Global Clinical Suite 함수들 (내용 복구) ---
 
 def show_adc_optimizer():
-    st.header("🧪 ADC Toxicity & Efficacy Predictor")
+    st.header(" ADC Toxicity & Efficacy Predictor")
     st.info("항체와 페이로드 조합에 따른 치료 창(Therapeutic Window)을 시뮬레이션합니다.")
     
     col_input, col_display = st.columns([1, 2])
@@ -44,7 +44,7 @@ def show_adc_optimizer():
         st.plotly_chart(fig, use_container_width=True)
 
 def show_equity_analyzer():
-    st.header("📊 Global Trial Equity & Risk Dashboard")
+    st.header(" Global Trial Equity & Risk Dashboard")
     df = pd.DataFrame({
         'City': ['Seoul', 'New York', 'London', 'Tokyo', 'Sao Paulo'],
         'lat': [37.56, 40.71, 51.50, 35.68, -23.55],
@@ -59,7 +59,7 @@ def show_equity_analyzer():
     st.plotly_chart(fig, use_container_width=True)
 
 def show_protocol_intelligence():
-    st.header("💬 Clinical Protocol Intelligence")
+    st.header(" Clinical Protocol Intelligence")
     uploaded_file = st.file_uploader("임상 프로토콜 PDF 업로드", type="pdf")
     if "messages" not in st.session_state:
         st.session_state.messages = [{"role": "assistant", "content": "안녕하세요, 형님! 프로토콜 분석을 도와드릴까요?"}]
@@ -92,12 +92,12 @@ def show_k_multi_center_tracker():
     st.plotly_chart(fig, use_container_width=True)
 
 def show_patient_funnel():
-    st.header("📉 환자 스크리닝 & 탈락 분석 퍼널")
+    st.header(" 환자 스크리닝 & 탈락 분석 퍼널")
     funnel_data = pd.DataFrame({"Stage": ["Pre-Screened", "Logged", "Eligible", "Enrolled"], "Count": [1200, 450, 180, 155]})
     st.plotly_chart(px.funnel(funnel_data, x='Count', y='Stage'), use_container_width=True)
 
 def show_safety_ae_monitoring():
-    st.header("⚠️ 실시간 안전성 알람 & 호중구 감소증 관리")
+    st.header(" 실시간 안전성 알람 & 호중구 감소증 관리")
     days = np.arange(0, 22, 1)
     anc_values = 3500 - (2500 * np.exp(-(days-8)**2 / 10)) 
     fig = px.line(x=days, y=anc_values, labels={'x':'Day', 'y':'ANC (cells/mm³)'}, title="Patient ID: K-001 Trend")
