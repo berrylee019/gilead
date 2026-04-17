@@ -102,7 +102,8 @@ def show_protocol_intelligence(): st.header("💬 Protocol Intelligence")
 
 # --- [3] 메인 사이드바 내비게이션 (이원화) ---
 
-st.sidebar.image("https://gilead.stylelabs.cloud/api/public/content/89749f3b535e4eebb8ae07c8e9607b17?v=c1371898", width=150)
+#st.sidebar.image("https://gilead.stylelabs.cloud/api/public/content/89749f3b535e4eebb8ae07c8e9607b17?v=c1371898", width=150)
+st.sidebar.info("")
 
 # 카테고리 선택
 category = st.sidebar.selectbox("Select Suite", ["Global Clinical Suite", "Gilead Korea Edition"])
