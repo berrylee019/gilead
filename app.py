@@ -109,7 +109,7 @@ def show_safety_ae_monitoring():
 
 #st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Gilead_Sciences_logo.svg/512px-Gilead_Sciences_logo.svg.png", width=180)
 #st.sidebar.info("")
-#category = st.sidebar.selectbox("Select Suite", ["Global Clinical Suite", "Gilead Korea Edition"])
+category = st.sidebar.selectbox("Select Suite", ["Global Clinical Suite", "Gilead Korea Edition"])
 #st.sidebar.markdown("---")
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/2864/2864248.png", width=60)
