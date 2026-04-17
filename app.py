@@ -108,10 +108,14 @@ def show_safety_ae_monitoring():
 # --- [3] 메인 사이드바 내비게이션 ---
 
 #st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Gilead_Sciences_logo.svg/512px-Gilead_Sciences_logo.svg.png", width=180)
-st.sidebar.info("")
-category = st.sidebar.selectbox("Select Suite", ["Global Clinical Suite", "Gilead Korea Edition"])
-st.sidebar.markdown("---")
-
+#st.sidebar.info("")
+#category = st.sidebar.selectbox("Select Suite", ["Global Clinical Suite", "Gilead Korea Edition"])
+#st.sidebar.markdown("---")
+with st.sidebar:
+    st.image("https://cdn-icons-png.flaticon.com/512/2864/2864248.png", width=60)
+    st.title("MisaTech AI")
+    st.markdown("---")
+    
 if category == "Global Clinical Suite":
     app_mode = st.sidebar.radio("Global Tools", ["ADC Optimizer", "Equity Analyzer", "Protocol Intelligence"])
 else:
