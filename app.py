@@ -107,7 +107,8 @@ def show_safety_ae_monitoring():
 
 # --- [3] 메인 사이드바 내비게이션 ---
 
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Gilead_Sciences_logo.svg/512px-Gilead_Sciences_logo.svg.png", width=180)
+#st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Gilead_Sciences_logo.svg/512px-Gilead_Sciences_logo.svg.png", width=180)
+st.sidebar.info("")
 category = st.sidebar.selectbox("Select Suite", ["Global Clinical Suite", "Gilead Korea Edition"])
 st.sidebar.markdown("---")
 
